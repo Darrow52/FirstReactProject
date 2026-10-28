@@ -1,0 +1,143 @@
+/* All slides share one grid cell, so the banner keeps the height of a slide */
+.hero {
+  display: grid;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.hero__slide,
+.hero__controls {
+  grid-area: 1 / 1;
+}
+
+.hero__slide {
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 0.6s,
+    visibility 0.6s;
+}
+
+.hero__slide--active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* The banner keeps the 1440×468 composition and scales it with the viewport */
+.hero__stage {
+  --u: calc(100cqw / 1440);
+
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  aspect-ratio: 1440 / 468;
+  margin: 0 auto;
+  container-type: inline-size;
+}
+
+.hero__stage > * {
+  position: absolute;
+}
+
+.hero__controls {
+  justify-self: center;
+  pointer-events: none;
+}
+
+.hero__dots {
+  left: 50%;
+  top: calc(428 * var(--u));
+  transform: translateX(-50%);
+  pointer-events: auto;
+}
+
+.hero__stamp {
+  background: var(--color-white);
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  /* The stamp is only visible inside the 241×195 rectangle it was masked onto */
+  clip-path: inset(13.52% 1.07% 17.08% 13.17%);
+}
+
+.hero__decor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__decor-inner {
+  position: relative;
+  flex: none;
+  overflow: hidden;
+}
+
+.hero__decor-inner img {
+  position: absolute;
+  max-width: none;
+}
+
+.hero__decor--doodle .hero__decor-inner {
+  opacity: 0.7;
+}
+
+.hero__product {
+  max-width: none;
+  object-fit: cover;
+}
+
+.hero__card {
+  border-radius: calc(24 * var(--u));
+  background: var(--color-white);
+  box-shadow: 0 calc(16 * var(--u)) calc(40 * var(--u)) rgb(0 0 0 / 0.18);
+}
+
+.hero__card img {
+  width: 100%;
+  height: 100%;
+  padding: 8%;
+  object-fit: contain;
+}
+
+.hero__text {
+  left: calc(120 * var(--u));
+  top: calc(83 * var(--u));
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+.hero__eyebrow {
+  font-size: max(11px, calc(30 * var(--u)));
+  line-height: 1;
+}
+
+.hero__title {
+  display: flex;
+  flex-direction: column;
+  gap: calc(13 * var(--u));
+  margin-top: calc(23 * var(--u));
+  font-size: calc(84 * var(--u));
+  font-weight: 700;
+  line-height: calc(63 * var(--u));
+  text-transform: uppercase;
+}
+
+.hero__title-line--outline {
+  color: transparent;
+  -webkit-text-stroke: max(1px, calc(1.5 * var(--u))) var(--color-white);
+}
+
+.hero__discount {
+  margin-top: calc(26 * var(--u));
+  font-size: max(12px, calc(34 * var(--u)));
+  line-height: calc(30 * var(--u));
+}
+
+.hero__discount b {
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__slide {
+    transition: none;
+  }
+}

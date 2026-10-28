@@ -1,0 +1,74 @@
+.featured-brands {
+  padding: 24px 0;
+}
+
+.featured-brands__list {
+  display: flex;
+  gap: 16px;
+  margin: 24px calc(var(--gutter) * -1) 0;
+  padding: 0 var(--gutter);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 var(--gutter);
+  scrollbar-width: none;
+}
+
+.featured-brands__item {
+  flex: 0 0 min(389px, 100%);
+  scroll-snap-align: start;
+}
+
+.brand-card {
+  --u: calc(100cqw / 389);
+
+  position: relative;
+  display: block;
+  aspect-ratio: 389 / 207;
+  overflow: hidden;
+  border-radius: 16px;
+  color: var(--color-white);
+  container-type: inline-size;
+}
+
+.brand-card__tagline {
+  position: absolute;
+  left: calc(20 * var(--u));
+  top: calc(94 * var(--u));
+  padding: calc(9 * var(--u)) calc(20 * var(--u));
+  border-radius: calc(8 * var(--u));
+  font-size: calc(14 * var(--u));
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.brand-card__discount {
+  position: absolute;
+  left: calc(20 * var(--u));
+  top: calc(149 * var(--u));
+  font-size: calc(24 * var(--u));
+  line-height: calc(30 * var(--u));
+  white-space: nowrap;
+}
+
+.brand-card__discount b {
+  font-weight: 700;
+}
+
+.featured-brands__pager {
+  height: 8px;
+  margin-top: 30px;
+}
+
+@media (min-width: 1280px) {
+  .featured-brands {
+    padding: 50px 0 54px;
+  }
+
+  .featured-brands__list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 30px 0 0;
+    padding: 0;
+    overflow: visible;
+  }
+}

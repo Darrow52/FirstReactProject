@@ -1,0 +1,154 @@
+.topbar {
+  background: var(--color-yellow);
+  color: var(--color-text);
+  font-size: 14px;
+}
+
+.topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 32px;
+}
+
+.topbar__delivery {
+  font-weight: 600;
+  line-height: 14px;
+}
+
+.topbar__links {
+  display: none;
+}
+
+.topbar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 18px;
+}
+
+.topbar__accent {
+  font-weight: 600;
+}
+
+.mainbar {
+  position: relative;
+  z-index: 15;
+  background: var(--color-white);
+}
+
+.mainbar__inner {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    'logo actions'
+    'search search';
+  align-items: center;
+  row-gap: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.mainbar__logo {
+  grid-area: logo;
+}
+
+.user-actions {
+  grid-area: actions;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.user-actions__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-text);
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.user-actions__item:hover {
+  color: var(--color-heading);
+}
+
+.user-actions__label {
+  display: none;
+}
+
+.user-actions__cart {
+  position: relative;
+}
+
+.user-actions__badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: var(--color-green);
+  color: var(--color-white);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .topbar__inner {
+    min-height: 42px;
+  }
+
+  .topbar__links {
+    display: flex;
+    align-items: center;
+  }
+
+  .topbar__links li {
+    display: flex;
+    align-items: center;
+  }
+
+  .topbar__links li + li::before {
+    content: '';
+    width: 1px;
+    height: 18px;
+    margin: 0 16px;
+    background: var(--color-white);
+  }
+
+  .mainbar__inner {
+    grid-template-columns: auto minmax(0, 507px) auto;
+    grid-template-areas: 'logo search actions';
+    justify-content: space-between;
+    column-gap: 24px;
+    min-height: 90px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .user-actions__label {
+    display: inline;
+  }
+
+  .user-actions__item + .user-actions__item::before {
+    content: '';
+    width: 1px;
+    height: 24px;
+    margin-right: 14px;
+    background: var(--color-divider);
+  }
+}
+
+@media (min-width: 1280px) {
+  .mainbar__inner {
+    grid-template-columns: 358px 507px 1fr;
+    column-gap: 0;
+  }
+}

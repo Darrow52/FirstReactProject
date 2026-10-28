@@ -1,0 +1,44 @@
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+}
+
+.dots__dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  transition:
+    width 0.3s,
+    background-color 0.3s;
+}
+
+.dots__dot::before {
+  content: '';
+  position: absolute;
+  inset: -8px -3px;
+}
+
+.dots__dot[aria-current='true'] {
+  width: 24px;
+}
+
+.dots--light .dots__dot {
+  background: var(--color-white);
+}
+
+.dots--light .dots__dot:not([aria-current='true']):hover {
+  background: rgb(255 255 255 / 0.7);
+}
+
+.dots--dark .dots__dot {
+  background: var(--color-divider);
+}
+
+.dots--dark .dots__dot:hover,
+.dots--dark .dots__dot[aria-current='true'] {
+  background: var(--color-green);
+}
